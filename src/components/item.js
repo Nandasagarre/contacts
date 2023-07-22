@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {useState} from 'react';
+
 
 const Item = ({ firstname, lastname, id,  email, numbers}) => {
 
@@ -44,7 +44,7 @@ const Item = ({ firstname, lastname, id,  email, numbers}) => {
 
   return (
 <>
-<div className="modal fade" id="edit" tabIndex="-1" aria-labelledby="add" aria-hidden="true">
+<div className="modal fade" id={`x${firstname}`} tabIndex="-1" aria-labelledby="add" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -55,27 +55,27 @@ const Item = ({ firstname, lastname, id,  email, numbers}) => {
         <form onSubmit={handleSave}>
           <div className="mb-3">
             <label htmlFor="recipient-name" className="col-form-label">First Name:</label>
-            <input name='first_name' type="text" className="form-control" key={firstname} defaultValue={firstname}/>
+            <input name='first_name' type="text" className="form-control" defaultValue={firstname}/>
           </div>
           <div className="mb-3">
             <label htmlFor="recipient-name" className="col-form-label">Last Name:</label>
-            <input name='last_name' type="text" className="form-control"key={lastname} defaultValue={lastname}/>
+            <input name='last_name' type="text" className="form-control" defaultValue={lastname}/>
           </div>
           <div className="mb-3">
             <label htmlFor="recipient-name" className="col-form-label">Email:</label>
-            <input required name='email'  type="text" className="form-control" key={email} defaultValue={email}/>
+            <input required name='email'  type="text" className="form-control" defaultValue={email}/>
           </div>
           <div className="mb-3">
             <label htmlFor="recipient-name" className="col-form-label">Number1:</label>
-            <input required name="numb1" type="text" className="form-control" key={numbers[0]} defaultValue={numbers[0]}/>
+            <input required name="numb1" type="text" className="form-control" defaultValue={numbers[0]}/>
           </div>
           <div className="mb-3">
             <label htmlFor="recipient-name" className="col-form-label">Number2:</label>
-            <input name="numb2" type="text" className="form-control" key={numbers[1]}  defaultValue={numbers[1]}/>
+            <input name="numb2" type="text" className="form-control" defaultValue={numbers[1]}/>
           </div>
           <div className="mb-3">
             <label htmlFor="recipient-name" className="col-form-label">Number3:</label>
-            <input name="numb3"  type="text" className="form-control" key={numbers[2]} defaultValue={numbers[2]}/>
+            <input name="numb3"  type="text" className="form-control" defaultValue={numbers[2]}/>
           </div>
           <div className="modal-footer">
         <button type="submit" className="btn btn-primary">Save?</button>
@@ -92,7 +92,7 @@ const Item = ({ firstname, lastname, id,  email, numbers}) => {
     <div className="d-flex contact-item mb-3">
   <div className="p-2 bd-highlight">First Name: {firstname} <br/> Last Name: {lastname} <br/> Email: {email} <br/> Numbers: {numbers.filter(num => num !== null).join(", ")}</div>
    <div className="ms-auto p-2">
-   <div data-bs-toggle="modal" data-bs-target="#edit" data-bs-whatever="@add"><i className="fa-solid fa-pen-to-square"></i></div>
+   <div data-bs-toggle="modal" data-bs-target={`#x${firstname}`}  data-bs-whatever="@edit"><i className="fa-solid fa-pen-to-square"></i></div>
   <div className="mt-3" onClick={() => handleDelete(id)}><i className="fa-solid fa-trash"></i></div>
    </div>
 
